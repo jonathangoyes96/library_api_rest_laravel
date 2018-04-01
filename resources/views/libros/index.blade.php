@@ -36,9 +36,9 @@
                                             <td>{{$libro->edicion}}</td>
                                             <td>{{$libro->autor}}</td>
                                             <td>{{$libro->precio}}</td>
-                                            <td><a class="btn btn-primary btn-xs" href="{{action('LibroController@edit', $libro->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                            <td><a class="btn btn-primary btn-xs" href="{{action('LibrosController@edit', $libro->id)}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
                                             <td>
-                                                <form action="{{action('LibroController@destroy', $libro->id)}}" method="post">
+                                                <form action="{{action('LibrosController@destroy', $libro->id)}}" method="post">
                                                     {{csrf_field()}}
                                                     <input name="_method" type="hidden" value="DELETE">
 

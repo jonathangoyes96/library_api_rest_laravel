@@ -52,7 +52,7 @@ class LibrosController extends Controller
             'precio'=>'required'
         ]);
         Libro::create($request->all());
-        return redirect()->route('libros.index')->with('success','Registro creado satisfactoriamente');
+        return redirect()->route('libro.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
@@ -64,7 +64,7 @@ class LibrosController extends Controller
     public function show($id)
     {
         $libros=Libro::find($id);
-        return  view('libros.show',compact('libros'));
+        return  view('libro.show',compact('libros'));
     }
 
     /**
@@ -92,7 +92,7 @@ class LibrosController extends Controller
         $this->validate($request,[ 'nombre'=>'required', 'resumen'=>'required', 'npagina'=>'required', 'edicion'=>'required', 'autor'=>'required', 'npagina'=>'required', 'precio'=>'required']);
 
         libro::find($id)->update($request->all());
-        return redirect()->route('libros.index')->with('success','Registro actualizado satisfactoriamente');
+        return redirect()->route('libro.index')->with('success','Registro actualizado satisfactoriamente');
 
     }
 
@@ -106,6 +106,20 @@ class LibrosController extends Controller
     {
         //
         Libro::find($id)->delete();
-        return redirect()->route('libros.index')->with('success','Registro eliminado satisfactoriamente');
+        return redirect()->route('libro.index')->with('success','Registro eliminado satisfactoriamente');
     }
+
+    /************** METODOS API REST **************/
+
+    /**
+     * Ejemplo de método REST
+     * Metodo que se utiliza para obtener los datos de todos los libros almacenados en la base de datos
+     * @return \Illuminate\Http\Response
+     */
+    public function getLibros(){
+        $libros=Libro::all();
+        return response()->json($libros);
+    }
+
+
 }

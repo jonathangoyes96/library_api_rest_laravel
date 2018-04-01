@@ -25,3 +25,7 @@ Route::get('/', function () {
  * DELETE /libro/{id} -> elimina un libro
  */
 Route::resource('libro', 'LibrosController');
+
+// Aquí lo que le estamos diciendo es que cuando haya una petición HTTP y que sea de tipo GET, con la terminación ‘api/v1/libros’,
+// se llame al método getLibros  del controlador LibrosController.
+Route::get('api/v1/libros','LibrosController@getLibros');
